@@ -39,7 +39,7 @@ jobs:
           DOCKER_CLI_ACI: 1
 
       - name: Image scan
-        run: trivy image rezcloud/k8s:latest > trivyimage.txt
+        run: trivy image *YOURDOCKERUSERNAME*/k8s:latest > trivyimage.txt
 
   deploy:
    needs: build-analyse-scan   
@@ -49,7 +49,7 @@ jobs:
         run: docker pull *YOURDOCKERUSERNAME*/k8s:latest
 
       - name: Deploy to container
-        run: docker run -d --name game -p 3000:3000 rezcloud/k8s:latest
+        run: docker run -d --name game -p 3000:3000 *YOURDOCKERUSERNAME*/k8s:latest
 
       - name: Update kubeconfig
         run: aws eks --region eu-west-2 update-kubeconfig --name EKS_CLOUD
