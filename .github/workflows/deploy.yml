@@ -1,4 +1,4 @@
-name: Push to Live
+name: K8 Deploy
 
 on:
   workflow_dispatch:
